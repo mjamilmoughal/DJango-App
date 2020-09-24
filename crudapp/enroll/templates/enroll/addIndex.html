@@ -1,0 +1,58 @@
+{% extends 'enroll/base.html'%}
+
+{% block content %}
+<div class="row">
+    <div class="col-sm-4">
+        <h2 class="text-center alert alert-info">Add and Show</h2>
+
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{form.as_p}}
+            <input type="submit" class="btn btn-success" value="Save">
+        </form>
+    </div>
+
+    <div class="col-sm-8">
+        <h4 class="text-center alert alert-success">
+            List of Users
+        </h4>
+        {% if users_list %}
+
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Password</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users_list %}
+                <tr>
+                    <td>{{user.id}}</td>
+                    <td>{{user.name}}</td>
+                    <td>{{user.email}}</td>
+                    <td>{{user.password}}</td>
+                    <td>
+                        <a class="btn btn-success">Edit</a>
+                        <form action="{% url 'delete' user.id %}" method="POST">
+                            {% csrf_token %}
+                            <input type=" submit" value="Delete" class="btn btn-danger">
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+
+        {% else %}
+        <h4 class=" text-center alert alert-danger">No data found</h4>
+        {% endif %}
+    </div>
+
+</div>
+
+{% endblock content %}

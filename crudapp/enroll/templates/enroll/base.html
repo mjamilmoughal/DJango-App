@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{%load static%}
+<html>
+
+<head>
+    <title>CRUD App</title>
+    <link rel="stylesheet" href="{% static 'enroll/css/bootstrap.min.css' %}">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center alert alert-success">DJango CRUD App</h2>
+        {%block content%}
+        {%endblock content%}
+    </div>
+    <script src="{%static 'enroll/js/jquery.js'%}"></script>
+    <script src="{%static 'enroll/js/popper.js'%}"></script>
+    <script src="{%static 'enroll/js/bootstrap.min.js'%}"></script>
+</body>
+
+</html>
