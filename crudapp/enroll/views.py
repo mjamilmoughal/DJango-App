@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from .forms import StudentRegisteration
 from .models import User
+from enroll.service import ScrappingService
 # Create your views here.
 
 # Function to add a new record
@@ -24,7 +25,7 @@ def show_Index(request):
 
 
 def sample_page(request):
-    products = ['apple', 'banana', 'orange']
+    products = ScrappingService.get_amazon_data('')
     return render(request, 'enroll/sample.html', {'products': products})
 
 
